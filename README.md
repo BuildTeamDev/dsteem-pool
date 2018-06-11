@@ -1,4 +1,4 @@
-# dsteem-pool
+# dsteem-pool [![Package Version](https://img.shields.io/npm/v/dsteem-pool.svg?style=flat-square)](https://www.npmjs.com/package/dsteem-pool)
 
 Thin wrapper around [dsteem](https://github.com/jnordberg/dsteem) with identical API and automated fallback support
 
