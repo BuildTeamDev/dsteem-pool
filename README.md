@@ -2,6 +2,12 @@
 
 Thin wrapper around [dsteem](https://github.com/jnordberg/dsteem) with identical API and automated fallback support
 
+## Installation
+
+```
+npm i dsteem-pool --save
+```
+
 ## Usage
 
 original dsteem constructor:
