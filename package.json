@@ -1,6 +1,6 @@
 {
   "name": "dsteem-pool",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Thin wrapper around dsteem with identical API and automated fallback support",
   "main": "./dist/index.js",
   "scripts": {
@@ -17,14 +17,18 @@
     "pooled",
     "retry"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuildTeamDev/dsteem-pool"
+  },
   "author": "Paulius Uza <pauliusuza@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "dsteem": "^0.8.7"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "jest": "^23.1.0"
   }
 }
