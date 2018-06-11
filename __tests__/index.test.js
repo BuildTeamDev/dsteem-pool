@@ -6,7 +6,7 @@ test('Test Original', async (done) => {
     expect(discussions.length).toEqual(1);
     done();
   });
-}, 5000);
+}, 10000);
 
 test('Test Fallback', async (done) => {
   const client = new Client([
@@ -17,4 +17,4 @@ test('Test Fallback', async (done) => {
     expect(discussions.length).toEqual(1);
     done();
   });
-}, 70000);
+}, 75000);

@@ -24,7 +24,7 @@ let resolve = function resolve(obj, path) {
   }, obj || self)
 }
 
-export class Client {
+class Client {
 
   constructor(url) {
     if(Array.isArray(url)) {
@@ -43,16 +43,21 @@ export class Client {
         const targetValue = Reflect.get(target, propKey, receiver);
         if (typeof targetValue === 'function') {
           return function (...args) {
-            return targetValue.apply(target, args).catch((e) => {
-              if(['request-timeout'].indexOf(e.type) != -1) {
-                const next = pool[index + 1];
-                if(next) {
-                  return resolve(next, path.join('.'))[propKey].apply(next, arguments);
-                } else {
-                  throw e;
+            const fn = targetValue.apply(target, args);
+            if(fn.catch) {
+              return fn.catch((e) => {
+                if(['request-timeout'].indexOf(e.type) != -1) {
+                  const next = pool[index + 1];
+                  if(next) {
+                    return resolve(next, path.join('.'))[propKey].apply(next, arguments);
+                  } else {
+                    throw e;
+                  }
                 }
-              }
-            });
+              });
+            } else {
+              return fn;
+            }
           }
         } else {
           path.push(propKey);
@@ -64,4 +69,8 @@ export class Client {
       return new Proxy(obj, handler);
     }
   }
+};
+
+export {
+  Client
 };
