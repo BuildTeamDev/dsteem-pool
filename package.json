@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Thin wrapper around dsteem with identical API and automated fallback support",
   "main": "./dist/index.js",
-  "private": true,
   "scripts": {
     "build": "./node_modules/.bin/babel -d dist src/",
     "test": "jest",
     "dev": "npm run build && node ./dist/index.js",
-    "prepublish": "npm run test && npm run build"
+    "prepublish": "npm run build"
   },
   "keywords": [
     "dsteem",
@@ -19,7 +18,7 @@
     "retry"
   ],
   "author": "Paulius Uza <pauliusuza@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
