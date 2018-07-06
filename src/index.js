@@ -46,13 +46,16 @@ class Client {
             const fn = targetValue.apply(target, args);
             if(fn.catch) {
               return fn.catch((e) => {
-                if(['request-timeout'].indexOf(e.type) != -1) {
+                if(['request-timeout'].indexOf(e.type) != -1 || ['ENOTFOUND'].indexOf(e.code) != -1) {
                   const next = pool[index + 1];
                   if(next) {
                     return resolve(next, path.join('.'))[propKey].apply(next, arguments);
                   } else {
                     throw e;
                   }
+                } else {
+                  console.error(`Error of type ${e.type}/${e.code} is not handled by dsteem-pool`, e.message);
+                  throw e;
                 }
               });
             } else {
