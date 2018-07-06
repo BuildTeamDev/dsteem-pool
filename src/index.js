@@ -26,12 +26,12 @@ let resolve = function resolve(obj, path) {
 
 class Client {
 
-  constructor(url) {
+  constructor(url, opts) {
     if(Array.isArray(url)) {
-      pool = url.map((u, i) => this.wrap(new OriginalClient(u), i));
+      pool = url.map((u, i) => this.wrap(new OriginalClient(u, opts), i));
       return capture(this);
     } else {
-      return new OriginalClient(url);
+      return new OriginalClient(url, opts);
     }
   }
 
