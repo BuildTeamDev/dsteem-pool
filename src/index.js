@@ -1,4 +1,4 @@
-import { Client as OriginalClient } from 'dsteem';
+import { Client as OriginalClient, PrivateKey, Price, Asset } from 'dsteem';
 
 let pool = [];
 let capture = function capture(obj) {
@@ -54,7 +54,7 @@ class Client {
                     throw e;
                   }
                 } else {
-                  console.error(`Error of type ${e.type}/${e.code} is not handled by dsteem-pool`, e.message);
+                  if(e.type || e.code) console.error(`Error of type ${e.type}/${e.code} is not handled by dsteem-pool`, e.message);
                   throw e;
                 }
               });
@@ -75,5 +75,8 @@ class Client {
 };
 
 export {
-  Client
+  Client,
+  PrivateKey,
+  Price,
+  Asset
 };
