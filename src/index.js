@@ -46,9 +46,10 @@ class Client {
             const fn = targetValue.apply(target, args);
             if(fn.catch) {
               return fn.catch((e) => {
-                if(['request-timeout'].indexOf(e.type) != -1 || ['ENOTFOUND'].indexOf(e.code) != -1) {
+                if(['request-timeout'].indexOf(e.type) != -1 || ['ENOTFOUND', 'ECONNREFUSED'].indexOf(e.code) != -1) {
                   const next = pool[index + 1];
                   if(next) {
+                    console.log(`${e.message}, skipping`);
                     return resolve(next, path.join('.'))[propKey].apply(next, arguments);
                   } else {
                     throw e;
