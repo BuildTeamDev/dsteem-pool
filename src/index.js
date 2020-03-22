@@ -1,4 +1,4 @@
-import { Client as OriginalClient, PrivateKey, Price, Asset } from 'dsteem';
+import { Client as OriginalClient, PrivateKey, Price, Asset } from 'hiveapitest';
 
 let pool = [];
 let capture = function capture(obj) {
