@@ -1,6 +1,6 @@
 {
   "name": "dsteem-pool-test",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Thin wrapper around dsteem with identical API and automated fallback support",
   "main": "./dist/index.js",
   "scripts": {
