@@ -1,4 +1,4 @@
-import { Client as OriginalClient, PrivateKey, Price, Asset } from 'hiveapitest';
+import { Client as OriginalClient, PrivateKey, Price, Asset } from '@hiveio/dhive';
 
 let pool = [];
 let capture = function capture(obj) {
@@ -73,7 +73,7 @@ class Client {
       return new Proxy(obj, handler);
     }
   }
-};
+}
 
 export {
   Client,

@@ -1,7 +1,7 @@
 import { Client } from '../src/index'
 
 test('Test Original', async (done) => {
-  const client = new Client('https://api.steemit.com');
+  const client = new Client('https://anyx.io');
   client.database.getDiscussions('trending', {tag: 'writing', limit: 1}).then((discussions) => {
     expect(discussions.length).toEqual(1);
     done();
@@ -11,7 +11,7 @@ test('Test Original', async (done) => {
 test('Test Fallback', async (done) => {
   const client = new Client([
     'https://demo.fakeurl.com',
-    'https://api.steemit.com'
+    'https://anyx.io'
   ]);
   client.database.getDiscussions('trending', {tag: 'writing', limit: 1}).then((discussions) => {
     expect(discussions.length).toEqual(1);
